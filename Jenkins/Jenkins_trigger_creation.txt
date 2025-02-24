@@ -1,0 +1,163 @@
+                                                        * Jenkins Trigger creation *
+
+  1. Freestyle - project
+
+
+* Job configuration of "build periodically and pol scm" trigger
+
+      → create "New item" (job or project) 
+
+         - give name of item 
+ 
+         - select freestyle project (type)
+
+      → Now choose "triggers" tab and check the box "Build periodically" or "poll scm".
+
+      → Once clicked on check box scheduling comment box will open-up. we need to schedule as per requirement.
+
+          Eg: To schedule a job at every minute every hour on Saturday 8th feburary.
+
+                - * * 8 2 6 ( maintain single space)
+
+                 Here, 
+                   
+                  - where 1st * means - Every minute
+
+                  - Where 2nd * means - Every hour
+
+                  - where num 8 means - Day of month(DOM)
+
+                  - where num 2 means - Month(Feburary)
+
+                  - where num 6 means - Day of week(staurday)
+ 
+     → Now, Click on Buils steps and choose Execute Windows batch command
+
+           - in the comment box give "dir" window batch command(lists the contents of a directory)
+
+      → Now click on save.
+
+      → After saving the trigger, click on "build now" 
+
+      → Now we can observe in "Builds" tab it will shows the build's of the job which we created. in this the job will be create at every minute every hour on given corn.
+
+      → we can disable the current project, configure → General → disabale → save.
+
+
+
+
+
+
+* configure of Build after other projects are Build:
+
+   → create a jobs more than 1 (job1, job2, job3)
+
+   → click on configure then "triggers" in the triggers select "build after other projects are build".
+
+   → Now give a project to watch 
+
+      - For job2 put the upstream project as job1
+
+      - For job3 put the upstream project as job2
+
+    → when we build the job2 the job1 will be the upstream and job3 will be the downstream.
+
+    → when we build the job3 the job1 will be the upstream and job2 will be the downstream.    
+
+    → when we build the job1 the job1 will be the upstream and job2 will be the downstream.
+
+    
+
+   → In the above trigger process we have an options such as :
+
+     1. Trigger only if build is stable(success) 
+
+        - In this if the job1 is success then it go's to other job(job2) otherwise the next job be on hold.
+
+     2. Trigger even if the build is unstable
+
+        - 
+
+     3. Trigger even if the build fails
+
+        - In this if the job1 is fails no worriess it will goes and process the next job.
+
+
+      4. Always trigger, even if the build is aborted
+
+        - 
+
+
+
+  2. Pipeline-project :
+
+      we are going for pipeline projects, in order to secure the cicd pipeline code by storing in any of the repositories(GitLab, GitHub, bitbucket)
+
+      → create a job with pipeline
+
+      → In the pipeline give a hello world sample pipeline code and save.
+
+      
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
+
+
+    → click on build now 
+ 
+    → we can install a stage view plugin for view the build of pipeline.
+
+    → In the stage view log we can check the output of job pipeline
+
+
+
+
+
+* Rebuild vs Replay
+
+  → When we rebuild, we are not changing anything, but where as replay gives us provision to change the code then and there.
+
+  → Replay: Use it as one of the troubleshooting mechanisms.
+
+  → If you do not know how to write pipeline script code, we can take advantage of the "Snippet Generator" in the pipeline syntax option (Pipeline Syntax option will be visible once you 
+
+    create a pipeline project or job).
+
+
+  → This Snippet Generator will help you learn the Pipeline Script code which can be used to define various steps. Pick a step you are interested in from the list, configure it, click 
+
+    Generate Pipeline Script, and you will see a Pipeline Script statement that would call the step with that configuration. You may copy and paste the whole statement into your script, or 
+
+     pick up just the options you care about.
+
+  
+     Example: To print a message
+
+    1. In the sample step of the Snippet Generator, you can search for "echo."
+
+
+    2. There is a step: echo: Print message.
+
+
+    3. Then, the message we want to print has to be passed in the message block.
+
+
+    4. Click on "Generate Pipeline Script," which will give us the script to print the message.
+
+
+    Note:
+
+        → By default, pipeline execution will work in serial mode only (which means one by one).
+
+        → If the previous stage is passed, only then it will go for the next or further stages.
+
+
+

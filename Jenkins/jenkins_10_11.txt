@@ -1,0 +1,188 @@
+10/02/25
+
+
+ 1. How to create new item/job/project from existing jobs:
+
+  → Click on "New Item"
+
+  → Give the job name and select the item
+
+  → Scroll down to the bottom, there you can see "Copy from" option
+
+  → In the "Copy from" tab, we need to pass the job name, which we want to make use of (existing job configuration).
+
+    Example: Create job10 (Take the reference of job5 configuration)
+
+
+
+ 2. How to delete a Jenkins job in Windows (Backend)
+
+    ProgramData → Jenkins → Jobs
+
+
+
+
+11/02/2025
+
+
+1. How to change the default port number of Jenkins?
+
+   → Go to the path: C:\Program Files\Jenkins
+
+   → In the above folder, locate jenkins.xml file
+
+   → Search for --httpPort=8080 in jenkins.xml file, where 8080 is the default port number. To change this default port number, replace    
+
+     8080 with "your own port number"
+
+   → Then save it. Once the jenkins.xml file is modified, restart the Jenkins server
+
+
+Note: Before changing any Jenkins configuration or port number, it is better to take a backup of the original files for safety.
+
+
+
+2. What if Jenkins Administrator forgets the password?
+
+   → Go to the Jenkins home directory:C:\ProgramData\Jenkins\.Jenkins
+
+   → In the above path, open the config.xml file and search for:<useSecurity>true</useSecurity>
+
+   → Replace true with false:<useSecurity>false</useSecurity>,Then save it.
+
+   → Browse the <Jenkins URL>, where you will not see any login details and user details in the GUI (Jenkins interface).
+
+   →  Go to Manage Jenkins → Go to Security under the Security Realm. (When we change config.xml file from true to false, it will be non. 
+
+      Here, we need to change Security Realm from Non-Jenkins own user database.)
+
+   →  When we change config.xml file from true to false, authentication will change to anyone (i.e., anyone can do anything). Here, we 
+
+      need to change "Anyone can do anything" to "Enable matrix-based or project-based strategy".
+
+   → once strategy is changed, it will unlock the anonymous user.
+
+   →  Click on Add User button and add the admin user. Assign the role as Administrator and save it.
+
+   →  Go to Manage Jenkins → Users, select the admin user, change the password, and save it.
+
+   →  Now, restart the Jenkins service to apply the changes.
+
+
+
+Note: Better take a backup of config.xml
+
+   → Once Restarted check with admin user check with admin user ehether admin user has all the privilages or not..!
+
+   → Go back to the config.xml file and modify <useSecurity> tag from false to true, then restart the Jenkins service.
+
+
+
+   * Using Jenkins Environment Variables:
+
+    → Jenkins Pipeline exposes environment variables via the global variable env, which is available from anywhere within a Jenkins file.
+
+    → Jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables
+
+
+   * Below are some environment variables:
+
+    1. BUILD_ID:
+
+      → The assigned BUILD_ID is identical to BUILD_NUMBER for builds created.
+
+      Likewise, we have:
+      → BUILD_NUMBER, BUILD_TAG, BUILD_URL, JENKINS_URL, JOB_NAME, NODE_NAME, WORKSPACE
+
+
+     For example: Use Jenkins file (Declarative Pipeline)
+
+     Basic example code - copy that code and create a new item in Jenkins for a Pipeline job, replacing the script with...Copied code - Save it and Build (Run) it.
+
+
+     Expected output should be:
+     → Running it on http://localhost:8080/
+
+
+
+  * How to Parameterize the Jenkins Job?
+
+   → Parameters allow you to prompt users for one or more inputs that will be passed into a build.
+
+   → Create a new job in the general configuration of the job, You will see an option "This project is parameterized",need to  checkbox that and where you will see option "add parameter", 
+
+    drop down qClick on that, and you will see various parameter types:
+  
+     Boolean, Choice, Credentials, File, Multiline, Password, Run, String Parameters.
+
+
+  * For example:
+
+  → Click on Choice Parameter (Defines a simple string parameter, which can be selected from a list. You can use it during a build.)
+
+  → Give the name as Env and under Choice, you can provide more than one environmental name and Under Description, add a description (which will be shown to the user later),Click on Save.
+
+  → When you check "Job to be triggered", you will see Build with Parameters options. Click on that and select the choices, which we configured and go for then Build button.
+
+
+  * Another way of creating Jenkins users:
+
+Manage Jenkins → Security → Check the box "Allow users to sign up".
+
+
+
+
+
+ 13-02-2025
+
+
+* Tools configuration in Jenkins :
+
+  → if at all we wanted to configure tools like apache maven, Docker..etc
+
+  → 	We need to go to "manage Jenkins" then "system configuration" then "tools" (CONFIGURE tOOLS, their locations and automatic installers)
+
+           eg : To configure apache maven specific version (3.6.0) under that to configure apache maven in tools tab we should install plugin apache maven then we can able to see maven 
+
+                 installations in tools.
+
+  → click on add maven then you can go for specific requirements.
+
+  → To install automatically we should check the box install automatically option.
+
+
+
+* How to trigger a job remotely.?
+
+  → To configure this kind of requirement we can make use of trigger - trigger build remotely using automation token
+
+  → Create free style job with name "Build-remotely", check box the trigger build remotely option and configure any build steps with authentication token (arun-123), save it and to check 
+    
+    this job use the below URL.
+
+  → syntax Remote URL: JENKINS_URL/job/buildremotely/build?token=TOKEN_NAME
+
+    Here, where JENKINS_URL is Jenkins is listening.
+
+          where Build remotely is job Name.
+
+          where TOKEN_NAME is Authentication token which we configured
+
+    eg : localhost:8080/job/buildremotely/build?token=arun123
+
+
+
+* Another way triggering the job remotely :
+
+   → In ordered to trigger job(eg: Job2) we can go for the below command
+
+     curl -u user:<API-TOKEN> -X POST localhost:8999/job/job2/build
+
+      Here, where -u is user(admin)
+
+            where API-TOKEN - which as to be generated with the user admin
+
+            where POST is a method to call the URL.
+
+
+

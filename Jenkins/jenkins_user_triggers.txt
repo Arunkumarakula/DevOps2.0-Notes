@@ -1,0 +1,154 @@
+                                                  * User security and triggers *
+
+
+07/02/2025
+
+
+
+* What if Jenkins user forgotten password.?
+
+    → As a Jenkins administrator their is a provision to reset the users credentials.
+
+      Manage Jenkins → security → users → choose user(which need to reset) → click on security → password(give password here).
+
+
+   → As a administrator to change the password again you need to inform to the users saying please follow below steps in the password
+
+        → Once logged into the user Jenkins gui, 
+
+        → click on username(top right corner)
+
+               eg: Arun Kumar
+
+        → click on security then their you can change password and click on save
+
+
+
+
+* What if Jenkins administrator forgotten the password..?
+
+  → In windows os "Jenkins Folder" we can see all Jenkins information and configuration details under the path
+
+        path: c:\programData\Jenkins\.jenkins 
+
+  → we can configure in config.xml file (but it's very complex - don't overwrite the file)
+
+
+
+
+* Jenkins File structure:
+
+    1. .Jenkins folder : where all the configured jobs information is available
+
+    2. secrets folder : where configured secrets are available
+
+    3. plugins folder : where all the plugins installed manually and automatically available  
+
+    4. nodes folder : where all the configured nodes are available
+
+    5. logs folder: we can see the slaves if configured and tasks(logs are available)
+
+    6. workspace folder : where all the configured jobs information is available
+
+
+
+  → Apart from the above folders there is Jenkins configurational file Namely "config.xml" file, First take the backup of file (or) copy that file somewhere.
+
+
+
+* Jenkins logs:
+
+  → we can also see the Jenkins logs in Jenkins gui-jenkins logs
+
+      path: Manage Jenkins  → status information  → system log  → All Jenkins logs(click)
+
+
+
+* Jenkins Version :
+
+   → we can see the Jenkins version bottom right corner in Jenkins gui and also
+
+      path : manage Jenkins  → status information  → about jekins
+
+
+
+* Way's to trigger Jenkins jobs.?
+
+   → Trigger means way of running the Jenkins job
+
+  There are 5-types (Set up automated actions that start your build based on specific events, like code changes or scheduled times)
+
+  
+    Type 1: Trigger builds remotely (e.g., from scripts)
+
+           → Inorder to use this trigger, first we need to generate the automation token of the job.
+
+           → Enable this option if you would like to trigger new builds by accessing a special predefined URL 
+
+           → You'll need to provide an authorization token in the form of a string(alphanumeric) so that only those who know it would be able to remotely trigger this project's builds.
+ 
+           → This is most useful when your Jenkins instance grants read access to this job to anonymous users
+
+           → When that's not the case, Jenkins will reject requests sent to the trigger URL even when the correct token is specified.
+
+           → Use the following URL to trigger build remotely: JENKINS_URL/job/hello/build?token=TOKEN_NAME
+
+
+
+    Type 2: Build after other projects are built(upstream and down stream jobs)
+
+            → Set up a trigger so that when some other projects finish building, a new build is scheduled for this project. This is convenient for running an extensive test after a build
+     
+              is complete, for example.
+
+            → We need to pass the job name(which are configured already) under projrcts to watch tab.
+
+                  - Trigger only if build is stable (success)
+
+                  - Trigger even if the build is unstable (process)
+
+                  - Trigger even if the build fails (Failed)
+
+                  - Always trigger, even if the build is aborted (stopped in middle)
+
+
+
+
+    Type 3: Build periodically
+
+          → In the order of precedenceThis fiels followsthe syntax of cron(with minor differences) specially,each line consists of 5 fields separated by TAB or white spaces
+
+          →     MINUTE HOUR DOM MONTH DOW
+               
+               - MINUTE 	Minutes within the hour (0–59)
+ 
+               - HOUR   	The hour of the day (0–23)
+ 
+               - DOM    	The day of the month (1–31)
+
+               - MONTH	        The month (1–12)
+
+               - DOW     	The day of the week (0–7) where 0 and 7 are Sunday.
+
+          → To specify multiple values for one field, the following operators are available. In the order of precedence
+
+     Note : Reference or practice go with the website "corntab.guru" (all small letters)
+
+
+
+
+    Type 4: GitHub hook trigger for GITScm polling
+
+         → When Jenkins receives a GitHub push hook, GitHub Plugin checks to see whether the hook came from a GitHub repository which matches the Git repository defined in SCM/Git section 
+
+           of this job
+
+
+
+    Type 5: Poll SCM
+
+           → Configure Jenkins to poll changes in SCM
+
+
+
+ * From the above 5 triggers options from we can also trigger tab's manually.
