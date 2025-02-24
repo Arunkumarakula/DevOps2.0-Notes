@@ -193,11 +193,9 @@ gh repo clone username/repository
 ```
 - Integrates well with GitHub features like issues, pull requests, etc.
 - Requires installation of the GitHub CLI tool.
-```
-Here’s your content in Markdown format:  
+`
 
-```markdown
-# Delete a File in GitHub Using Command Line
+## How to Delete a File in GitHub Using Command Line
 
 ## **Steps to Delete a File from GitHub**
 
