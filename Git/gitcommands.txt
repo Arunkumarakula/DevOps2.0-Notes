@@ -1,0 +1,203 @@
+1. git init : git init command initializes a new Git repository in a directory, It creates a hidden .git folder,which stores all the necessary repository files, including configuration, commit history, and branches
+
+   - The .git folder is located in the root directory of a Git repository.
+
+2. ls -a : command lists all files, including hidden ones.
+           eg :If we want to check .git folder
+
+
+3. git add : git add command is used to add changes to the staging area, It tells to git track changes in specific files.
+
+4. git add file1.txt file2.txt : command used to adds multiple specific files.
+
+5. git add . :command used to adds all modified and new files in the current directory.
+
+6. git add -A: command used to adds all changes (including deleted files).
+
+7. git add folder_name : command used adds all files inside a specific folder.
+
+8. git add *.sh/txt : command used to adds all .txt/.sh files in the current directory.
+
+9. git add -u: command used to stages only modified and deleted files but not new (untracked) files.
+
+10. git status: command is used to check the current state of your repository, including which files are modified, staged, or untracked.
+
+11. git rm --cached <file> : command used to remove a file from the staging area but keep it in the working directory.
+
+12. git commit -m "message": command is used to save changes to the local repository,It records a snapshot of the staged files, creating a new commit .
+
+13. git commit file-name -m "message" :command used to commit the single file.
+
+14. git log: command is used to view the commit history of a Git, including author of the commit, Date & time of the commit, commit message and commit id.
+
+   - The commit id consists of Aplanumeric of 40 characters.
+
+15. git log --oneline : Shows each commit in one line with a short commit-id(7characters) & message.
+
+16. git commit -a -m "message": command is used to automatically stage and commit only modified and deleted files in a single step without using of git add command.
+
+17. git ls-files: command used to check the files which are in local repository.
+
+18. git reset: command is used to undo commits ,It helps in undoing commits, un-staging files, or completely removing changes.
+
+   - If you have only one commit in your repository will not work because there is no previous commit to reset.
+
+   - Use git reset only if you want to remove a commit permanently
+
+  Types: git reset --soft HEAD~1 :command is used to undo the last commit while keeping the changes in staged area, it will not delete any files
+
+         git reset --mixed HEAD~1:command is used to undo the last commit while keeping the changes in the working directory but unstaging them.
+
+         git reset --hard HEAD~1:command is sued to undo the last commit completely by removing it from history and deleting all changes from both the staging area and working directory.
+
+19. git commit --amend  -m "Corrected commit message" : command is used to modify the most recent commit message.
+
+20. git revert "commid-id": command used to undo a previous commit by creating a new commit 
+                            - It does not remove history, making it safer than git reset.
+
+                            -When you want to undo a commit without deleting history.
+                            -When the commit has already been pushed to a remote repository.
+
+21. HEAD represents the latest commit.
+
+Branch : A branch in Git is a lightweight, movable pointer to a commit. It allows multiple developers to work on different features, bug fixes, without effecting main code.
+
+- Each branch represents an independent line of development, making it easy to manage parallel work, merge changes, and maintain a clean history.
+
+How Branches Work?
+- Git starts with a default branch called main or master.
+- You can create new branches from any commit.
+- Once the feature is complete, you can merge it back into the main branch.
+
+22. git branch:command is used to lists all local branches.
+
+23. git branch <branch-name>:command used to Creates a new branch.
+
+24. git switch <branch-name> or git checkout <branch-name> :command used to switches to one to another branch.
+
+25. git checkout -b <branch-name> or git switch -c <branch-name>:command used to creates and switches to a new branch.
+
+26. git branch -d <branch-name> : command used to delete a branch
+
+27. git branch -D <branch-name> :command used to	Force deletes a branch
+
+28. git merge: command is used to combine the changes from one branch into another
+
+29. git rebase: command used to reapply commits from one branch onto another by moving or rewriting commit history.
+
+                - This moves the current branch’s commits on top of the specified branch.
+                - Keeping a clean commit history
+                - Avoiding unnecessary merge commits.
+
+ Deffrence between merge and rebase :
+ - Both git merge and git rebase are used to integrate changes from one branch into another.
+
+merge : 
+- Combines branches by creating a new merge commit
+
+rebase :
+- Moves commits from one branch on top of another.
+- Rewrites commit history (linear)
+-No new commit
+
+30. git restore --staged <file>: command used to Unstage a file to working area.
+
+31. git restore file-name : command used to restore the deleted file.
+
+32. git remote -v : command used to view all remote repositories associated with your local Git repository, along with their URLs.
+
+33. git remote add origin <repo-url>: command is used to link your local Git repository to a remote repository
+
+                                      - origin → Default name for the remote repository
+
+34. git push origin <branch-name>: command is used to push your local branch changes to a remote repository.
+
+35. git push -u origin <branch-name>: command is used to push a local branch to a remote repository and set it as the upstream branch.
+
+                                       - First-time push of a new local branch to a remote repository
+
+36. git pull origin <branch-name>:command is  used to fetch and merge changes from the remote repository.
+
+37. git fetch: command is used to download changes from a remote repository without merging them into your local branch.
+               - It allows you to see the latest updates from the remote repository without modifying your working directory.
+
+39. git stash: command is used to temporarily saves your uncommitted changes.
+
+40. git stash list: command is used to displays a list of all stashed changes in your repository.
+
+41. git stash pop : command used to applies the latest stashed changes and removes them from the stash list. 
+
+42. git stash drop :command used to Remove the last stashed changes.
+
+43. git tag :command is used to mark specific points in Git history as important (e.g., version releases)
+
+44. git tag :List all tags in the repository.
+
+45. git tag <tag-name>: Create a new tag.
+
+46. git push origin --tags: Push all tags to the remote repository.
+
+47. git config --global user.name "username" : Sets your name for all commits across repositories.
+
+48. git config --global user.email "email@example.com" : Sets your email address for all commits across repositories.
+
+49. git config --global user.name : Displays the configured username.
+
+50. git config --global user.mail : Displays the configured email ID.
+
+51. git config --global --list : Lists all configured Git user details.
+
+52. git log --1 : Displays the most recent commit ID.
+
+53. git reflog : Shows the history of all branches.
+
+54. it diff : Compares working directory changes.
+
+56. git diff <commit-id> : Shows differences between a specific commit and the working directory.
+
+57. git diff <commit-id>..<commit-id> : Compares changes between two commits.
+
+58. git branch -m <old-name> <new-name> : Renames a branch.
+
+59. git branch -a : Lists all local and remote branches.
+
+60. git branch -r : Lists only remote branches.
+
+61. git merge --abort : Cancels a merge when conflicts arise.
+
+62. git cherry-pick <commit-id> : Applies a specific commit from another branch without merging the entire branch.
+
+63. git stash clear : Clears all stashes.
+
+64. git stash apply stash@{0} : Applies a specific stash.
+
+65. git stash drop stash@{1} : Removes a specific stash.
+
+66. git remote rm origin : Unlinks a remote repository.
+
+67. git fetch --all : Fetches updates from all branches.
+
+68. git push -u origin branch1 branch2 : Pushes multiple branches at the same time.
+
+69. git push -u origin --all : Pushes all branches to the remote repository.
+
+70. git push -u origin --delete <branch-name> : Deletes a remote branch.
+
+71. git --version : Displays the installed Git version.
+
+72. which git : Shows the Git installation path.
+
+73. git help --all : Lists all available Git commands.
+
+74. git add --all : Stages all changes in the current folder.
+
+75. .gitignore : Specifies files and directories to ignore in Git.
+
+76. rm -rf .git : Removes the Git repository from the current directory.
+
+77. *.temp : Ignores all .temp files.
+
+78. temp/ : Ignores all files inside any directory named temp.
+
+79. temp?.log : Ignores temp1.log, temp2.log, temp3.log, etc.
+
