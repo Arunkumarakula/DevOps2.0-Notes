@@ -72,7 +72,7 @@ Docker is a tool that allows the package an application with all its dependencie
 ---
 
 ## Docker Architecture:  
-![](images/DockerArchitecture.png)
+![](./Images/DockerArchitecture.png)
 When a user enters the command `docker run <image-name>`, the Docker client communicates with the Docker daemon. The daemon first checks if the image is available locally. If it is, the daemon runs the image; if not, it pulls the image from the Docker registry before running it.  
 
 ### 1. Docker Client:  
