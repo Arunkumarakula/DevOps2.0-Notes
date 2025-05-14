@@ -69,7 +69,7 @@ You create 3 containers: One running a Python app, One running a Node.js app, On
 
 ---
 
-** * Monolithic Architecture:** A monolithic architecture is a software design where all components of an application such as frontend, backend, and database are built and deployed as a single
+**Monolithic Architecture:** A monolithic architecture is a software design where all components of an application such as frontend, backend, and database are built and deployed as a single
                            unit. These components are tightly integrated and run within a single process.
 
 **➤ Monolithic Architecture** is Suitable for Small to medium-sized applications, Low traffic or simple apps.
@@ -92,7 +92,7 @@ User login, Product catalog, Shopping cart, Payment system → All of these feat
 
 ---
 
-** * Microservices Architecture :** Microservices architecture is a software design where an application is break down into small, independent components, each component is responsible for a
+**Microservices Architecture :** Microservices architecture is a software design where an application is break down into small, independent components, each component is responsible for a
                                specific business function.  
 **➤ Microservices** are suitable for Large applications with many features, Fast-growing apps with frequent updates.
 
@@ -116,4 +116,5 @@ Each service runs independently, making development, deployment, and scaling fas
 
 → More effort in deployment, testing, and monitoring.  
 → Complex to manage many services.
-![](./Images/monomicroo.jpg)
+
+            ![](./Images/monomicroo.jpg)
