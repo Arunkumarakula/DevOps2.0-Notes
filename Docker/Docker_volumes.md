@@ -10,7 +10,7 @@
 
 # Types of Docker Volume :
 
-- **Docker Volumes:** Docker Volume is a general term for a storage area managed by Docker.  
+ **Docker Volumes:** Docker Volume is a general term for a storage area managed by Docker.  
   → Within Docker volumes, there are two subtypes:
 
   1. **Named Volumes:**  
@@ -46,7 +46,7 @@
      → Quick to use — no need to name  
      → Good for temporary persistent storage
 
-- **Host Volumes (Bind Mounts):** Host Volumes allow you to mount a file or directory from your host machine into a Docker container.  
+ **Host Volumes (Bind Mounts):** Host Volumes allow you to mount a file or directory from your host machine into a Docker container.  
   → The container and the host share the same file/directory.  
   → Any changes made in the container are immediately visible on the host.  
   → Similarly, changes on the host reflect instantly inside the container.  
@@ -56,7 +56,7 @@
   **Example:**  
   ```bash
   docker run -v /host/path:/container/path nginx
-````
+  ```
 
 → Docker does **NOT** create a new volume.
 → Instead, it links your host directory (`/host/path`) to a path inside the container (`/container/path`).
