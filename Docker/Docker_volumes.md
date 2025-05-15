@@ -56,8 +56,7 @@
   **Example:**  
   ```bash
   docker run -v /host/path:/container/path nginx
-  ```
-
+   ```
 → Docker does **NOT** create a new volume.
 → Instead, it links your host directory (`/host/path`) to a path inside the container (`/container/path`).
 
@@ -65,6 +64,7 @@
 ✅ **Ideal For:**
 → Development: edit source code on the host and run inside container
 → Sharing logs from container to host
+
 🚫 **Avoid In:**
 → Production: it breaks Docker’s portability and isolation
 
@@ -93,7 +93,6 @@ docker run -it --name mycontainer -v /home/arun/mydata:/app/data alpine
 ```bash
 ls /app/data
 ```
-
 # tmpfs Volume :
 
 **tmpfs volume** is a temporary in-memory file system that Docker mounts inside a container. It stores data in RAM, not on disk.
@@ -106,7 +105,6 @@ That means:
 ```bash
 docker run --tmpfs /app/cache myimage
 ```
-
 → This mounts an in-memory directory inside the container at `/app/cache`.
 
 ✅ **Advantages:**
