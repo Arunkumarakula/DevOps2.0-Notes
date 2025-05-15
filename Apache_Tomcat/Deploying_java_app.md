@@ -143,5 +143,5 @@ sudo cp -r myshuttledev.war /opt/apache-tomcat-9.0.104/webapps/
 ```
 
 ---
-
+<img src="Images/myshuttle.png" alt="output" width="700" height="300"/>
 
