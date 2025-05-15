@@ -137,3 +137,5 @@ docker run --tmpfs /app/cache myimage
 → Temporary or sensitive in-memory data
 → Fast and auto-clears on stop
 
+```
+```
