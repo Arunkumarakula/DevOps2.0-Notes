@@ -20,9 +20,9 @@
 - Less secure than VMs (shares host OS)  
 - Complex to manage at large scale (needs orchestration)  
 - Limited GUI support.
-
 ---
-![](./Images/docker.png)
+ <img src="Images/docker.png" alt="contsiner" width="700" height="200"/>
+
 ## * Docker Architecture: 
 Docker follows a client-server architecture  
 - **Docker Client** : sends commands to the docker Daemon like docker run.  
@@ -130,4 +130,3 @@ Docker Host is the physical or virtual server where docker is installed.
 - Avoid running containers as root; use a non-root user.  
 - Use container Networks and firewalls.
 
-<img src="Images/docker.png" alt="contsiner" width="600" height="200"/>
