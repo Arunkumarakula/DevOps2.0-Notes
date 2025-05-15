@@ -1,6 +1,3 @@
-Sure! Here's your content formatted in **Markdown** with proper headings and highlights:
-
-````markdown
 # *Docker Network* 
 
 Docker networking is how Docker containers communicate with each other, with the host machine, and with the outside world (internet or other networks).  
