@@ -24,8 +24,7 @@ eg: my-volume
 
 ```bash
 docker run -v my-volume:/app/data nginx
-````
-
+```
 → This command runs a Docker container using the image named nginx
 → -v my-volume:/app/data means:
 → Mount the Docker volume named my-volume inside the container at the path /app/data.
