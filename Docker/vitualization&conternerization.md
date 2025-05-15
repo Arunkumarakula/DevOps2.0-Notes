@@ -20,8 +20,6 @@ You create 3 virtual machines: One with Ubuntu, One with Windows, One with CentO
 
 ➤ virtual machine includes Virtual CPU, Virtual Memory(Ram), Virtual Storage, Virtual Network, Operating system.
 
-➤Virtualization is well-suited for monolithic applications 
-
 **✅Advantages :**
 
 → Run multiple apps on one machine.  
