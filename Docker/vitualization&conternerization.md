@@ -117,4 +117,4 @@ Each service runs independently, making development, deployment, and scaling fas
 → More effort in deployment, testing, and monitoring.  
 → Complex to manage many services.
 
-![](./Images/monomicroo.jpg)
+![](./Images/momomicros.jpg)
