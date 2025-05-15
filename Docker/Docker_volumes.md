@@ -97,14 +97,12 @@ ls /app/data
 # tmpfs Volume :
 
 **tmpfs volume** is a temporary in-memory file system that Docker mounts inside a container. It stores data in RAM, not on disk.
-
 That means:
 → It is **fast**
 → It is **volatile** (data is lost when the container stops)
 → It is **secure** (nothing is written to disk)
 
 **Command:**
-
 ```bash
 docker run --tmpfs /app/cache myimage
 ```
@@ -137,5 +135,4 @@ docker run --tmpfs /app/cache myimage
 → Temporary or sensitive in-memory data
 → Fast and auto-clears on stop
 
-```
 ```
