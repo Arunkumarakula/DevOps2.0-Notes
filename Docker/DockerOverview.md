@@ -21,7 +21,7 @@
 - Complex to manage at large scale (needs orchestration)  
 - Limited GUI support.
 ---
- <img src="Images/docker.png" alt="contsiner" width="700" height="200"/>
+ <img src="Images/docker.png" alt="contsiner" width="700" height="300"/>
 
 ## * Docker Architecture: 
 Docker follows a client-server architecture  
