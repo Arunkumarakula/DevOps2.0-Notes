@@ -76,6 +76,12 @@ The ADD instruction copies files or directories from your local system into the 
 * Can also download files from a URL.
 * Automatically extracts compressed files (like .tar, .gz)
 
+**Example:**
+
+```
+ ADD https://example.com/big.tar.gz /var/www/html/
+```
+
 ---
 
 ### 5. CMD
