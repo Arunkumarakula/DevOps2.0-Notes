@@ -25,7 +25,7 @@ Docker forwards any traffic coming to host port 8080 to the container’s intern
 The application inside the container listens on port 80 and responds.
 
 **Response sent back:**  
-The response travels back the same way — from the container’s port 80 → host port 8080 → your browser or external system.
+The response travels back the same way from the container’s port 80 → host port 8080 → your browser or external system.
 
 ## In Docker, there are two main types of port mapping:
 
