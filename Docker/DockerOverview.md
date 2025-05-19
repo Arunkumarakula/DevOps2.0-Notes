@@ -21,29 +21,6 @@
 - Complex to manage at large scale (needs orchestration)  
 - Limited GUI support.
 ---
- # 🐳 Docker
-
-**Docker** is an open-source containerization platform used to deploy and run applications inside isolated environments called containers.
-
-➤ A Docker container is a lightweight, portable, and isolated environment used to run an application. It packages the application along with all its dependencies, libraries, and configuration files, ensuring it to run any environments by sharing the host operating system's kernel making them more fast and efficient.
-
----
-
-## ✅ Advantages :
-
-- Lightweight (Containers share the host OS kernel), and fast (start much faster than virtual machines).  
-- Isolated from other containers.  
-- Scalable (Easy to scale up/down services in response to demand with orchestration tools like Kubernetes).  
-- Portable (containers run consistently on any system).
-
----
-
-## ❌ Disadvantages :
-
-- Less secure than VMs (shares host OS)  
-- Complex to manage at large scale (needs orchestration)  
-- Limited GUI support.
----
  ![Image](https://github.com/user-attachments/assets/815ec490-1772-4c70-8947-446c606f18df)
 ## * Docker Architecture: 
 Docker follows a client-server architecture  
