@@ -96,7 +96,56 @@ Output :
 
 ## LAB :
 
-### Run an httpd container mapping host port 8080 to container port 80
+### create a custom Apache HTTP Server (httpd) image, assign a port, and deploy a colorful HTML page :
+#### 🔧 Step-by-Step Guide :
+
+##### step 1: Create Your Project Structure
+```bash
+mkdir Basic-Docker-Project
+cd Basic-Docker-Project
+```
+```bash
+vi index.html
+```
+- In the index.html file we can paste a basic html code, you can refer this code.
+```bash
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Colorful Apache Page</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px #000;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Keep Learning Keep Growing</h1>
+    <p>Happy Learning</p>
+</body>
+</html>
+```
+##### step2: Run Apache container with your HTML mounted and port mapped
+```bash
+docker run -d -p 8080:80 -v $(pwd):/usr/local/apache2/htdocs/ --name my-httpd-container httpd
+```
+- -d → run container detached (in background)
+- -p 8080:80 → map your machine’s port 8080 to the container’s port 80 (Apache’s default)
+- -v $(pwd):/usr/local/apache2/htdocs/ → mount your current folder (my-httpd-site) as the web root in the container
+- httpd → official Apache HTTP Server image.
+
+#### Step 3: Open your browser
 
 ```bash
 docker run -d -p 8080:80 --name mypractice httpd
@@ -111,15 +160,9 @@ docker ps (or) docker port httpd
 * `httpd` is the official image from Docker Hub.
 
 ### Run httpd container without port mapping
-
 ```bash
-docker run -d --name mypractice httpd
-```
-Check the port using :
-```bash
-docker ps (or) docker port httpd
+http://localhost:8080
 ```
 
-* No `-p` option means no ports are exposed to the host.
-* You cannot access the httpd server via localhost or the host IP.
+
 
