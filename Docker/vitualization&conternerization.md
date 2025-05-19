@@ -4,7 +4,8 @@ Virtualization and containerization are both methods of running multiple applica
 
 **Virtualiztion :** Virtualization is the process of creating virtual machines using a hypervisor, allowing multiple operating systems and applications to run independently on a single physical server.
 
-  <img src="Images/Vm.png" alt="contsiner" width="500" height="300"/>
+![Image](https://github.com/user-attachments/assets/5cd476ed-9b05-4311-b7c8-0a9ac901e1a5)
+
 
 **➤ Virtualization** is well-suited for monolithic applications because they need a full operating system, dedicated resources, and strong isolation.
 
@@ -37,10 +38,12 @@ You create 3 virtual machines: One with Ubuntu, One with Windows, One with CentO
 
 ---
 
-**Contenerization :** Containerization is a way to packaging an application along with its dependencies into a single container, ensuring it to run any environments by sharing the host 
-                    operating system's kernel.
+**Contenerization :** Containerization is a way to packaging an application along with its dependencies into a single container, ensuring it to run any environments by sharing the host  operating system's kernel.
 
- <img src="Images/Containerization.jpg" alt="contsiner" width="700" height="300"/>
+
+![Image](https://github.com/user-attachments/assets/79de0ef0-509d-4242-8cf7-1f59ba2c5a2f)
+
+
 
 **➤ Containerization** is well-suited for microservices-based applications because they need lightweight, portable environments, fast startup, and independent deployment for each service.
 
@@ -115,4 +118,5 @@ Each service runs independently, making development, deployment, and scaling fas
 → More effort in deployment, testing, and monitoring.  
 → Complex to manage many services.
 
- <img src="Images/Monolithic-Architecture-vs-Microservices.png" alt="contsiner" width="700" height="300"/>
+![Image](https://github.com/user-attachments/assets/e29e01a7-c931-4b7c-bedc-e1e4f0fbda0c)
+
