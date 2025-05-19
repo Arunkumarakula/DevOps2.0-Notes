@@ -154,11 +154,6 @@ Check the port using :
 ```bash
 docker ps (or) docker port httpd 
 ```
-
-* `-d` runs the container in detached mode (in the background).
-* `-p 8080:80` maps host port 8080 to container port 80.
-* `httpd` is the official image from Docker Hub.
-
 ---
 #### Step-By-Step process:
 
@@ -168,5 +163,5 @@ docker ps (or) docker port httpd
 ![Image](https://github.com/user-attachments/assets/7aabe234-11ab-4fd8-bc38-909fb80abf48)
 
 - After Running a container we can access the application using Ip-address, we can this output.
-![Image](https://github.com/user-attachments/assets/a930c8fd-9c16-4832-801b-2ed887d4d189)
+![](./Images/outputport.png)
 
