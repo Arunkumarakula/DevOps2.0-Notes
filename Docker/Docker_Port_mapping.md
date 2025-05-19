@@ -10,7 +10,7 @@ Port mapping in Docker is the process of assigning a port on the host machine to
 - Without port mapping, container apps cannot be accessed from outside Docker.  
 - This allows external access (like from browsers) to the container app.
 
-## How does the traffic flow (or the “path”) from outside to inside the container via port mapping
+## How does the traffic flow from outside to inside the container via port mapping
 
 **External request:**  
 You access the host machine’s port, for example, http://localhost:8080.
@@ -25,7 +25,7 @@ Docker forwards any traffic coming to host port 8080 to the container’s intern
 The application inside the container listens on port 80 and responds.
 
 **Response sent back:**  
-The response travels back the same way — from the container’s port 80 → host port 8080 → your browser or external system.
+The response travels back the same way from the container’s port 80 → host port 8080 → your browser or external system.
 
 ## In Docker, there are two main types of port mapping:
 
@@ -38,9 +38,26 @@ The response travels back the same way — from the container’s port 80 → ho
 ```bash
 docker run -P nginx
 ````
+* After running the container, use this command to hecck the random port is assigned or not.
+```bash
+docker port nginx
+```
+* Now we can see that the port like Example :
+```bash
+80/tcp -> 0.0.0.0:49153
+```
+➡️ This means:
+* The container's port 80 is mapped to host port 49153.
+* You can access the app using: http://localhost:49153
 
-* If Nginx exposes port 80, Docker might map it to something like 32768 on the host.
-* Random port (check via docker port).
+### Alternative: Use docker ps
+```bash
+docker ps
+```
+Look in the "PORTS" column. It will show something like:
+```bash
+0.0.0.0:49153->80/tcp
+```
 
 ✅ **Use When:**
 
@@ -57,7 +74,18 @@ docker run -P nginx
 ```bash
 docker run -p 8080:80 nginx
 ```
-
+* Now we can the port using
+```bash
+docker port nginx
+```
+(or)
+```bash
+docker ps
+```
+Output :
+```bash
+80/tcp -> 0.0.0.0:8080
+````
 * This maps host port 8080 → container port 80.
 
 ✅ **Use When:**
@@ -68,22 +96,81 @@ docker run -p 8080:80 nginx
 
 ## LAB :
 
-### Run an Nginx container mapping host port 8080 to container port 80
+### create a custom Apache HTTP Server (httpd) image, assign a port, and deploy a colorful HTML page :
+#### 🔧 Step-by-Step Guide :
+
+##### step 1: Create Your Project Structure
+```bash
+mkdir Basic-Docker-Project
+cd Basic-Docker-Project
+```
+```bash
+vi index.html
+```
+- In the index.html file we can paste a basic html code, you can refer this code.
+```bash
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Colorful Apache Page</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px #000;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Keep Learning Keep Growing</h1>
+    <p>Happy Learning</p>
+</body>
+</html>
+```
+##### step2: Run Apache container with your HTML mounted and port mapped
+```bash
+docker run -d -p 8080:80 -v $(pwd):/usr/local/apache2/htdocs/ --name my-httpd-container httpd
+```
+- -d → run container detached (in background)
+- -p 8080:80 → map your machine’s port 8080 to the container’s port 80 (Apache’s default)
+- -v $(pwd):/usr/local/apache2/htdocs/ → mount your current folder (my-httpd-site) as the web root in the container
+- httpd → official Apache HTTP Server image.
+
+#### Step 3: Open your browser
 
 ```bash
-docker run -d -p 8080:80 --name my-nginx nginx
+docker run -d -p 8080:80 --name mypractice httpd
+```
+Check the port using :
+```bash
+docker ps (or) docker port httpd
 ```
 
 * `-d` runs the container in detached mode (in the background).
 * `-p 8080:80` maps host port 8080 to container port 80.
-* `nginx` is the official image from Docker Hub.
+* `httpd` is the official image from Docker Hub.
 
-### Run Nginx container without port mapping
-
+### Run httpd container without port mapping
 ```bash
-docker run -d --name my-nginx nginx
+http://localhost:8080
 ```
+---
+#### Step-By-Step process:
 
-* No `-p` option means no ports are exposed to the host.
-* You cannot access the Nginx server via localhost or the host IP.
+![](./Images/Dockerport.png))
+
+- Index.html file which conatins html-code
+![](./Images/indexhtmlport.png)
+
+- After Running a container we can access the application using Ip-address, we can this output.
+![](./Images/outputport.png)
 

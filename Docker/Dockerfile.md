@@ -80,7 +80,7 @@ The ADD instruction copies files or directories from your local system into the 
 
 ```
  ADD https://example.com/big.tar.gz /var/www/html/
-```
+  ```
 
 ---
 
