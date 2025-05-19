@@ -10,7 +10,7 @@ Port mapping in Docker is the process of assigning a port on the host machine to
 - Without port mapping, container apps cannot be accessed from outside Docker.  
 - This allows external access (like from browsers) to the container app.
 
-## How does the traffic flow (or the “path”) from outside to inside the container via port mapping
+## How does the traffic flow from outside to inside the container via port mapping
 
 **External request:**  
 You access the host machine’s port, for example, http://localhost:8080.
