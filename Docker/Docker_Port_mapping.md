@@ -38,6 +38,10 @@ The response travels back the same way from the container’s port 80 → host p
 ```bash
 docker run -P nginx
 ````
+* After running the container, use this command to hecck the random port is assigned or not.
+```bash
+docker port my-nginx
+```
 
 * If Nginx exposes port 80, Docker might map it to something like 32768 on the host.
 * Random port (check via docker port).
