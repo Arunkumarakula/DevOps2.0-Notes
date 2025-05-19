@@ -40,7 +40,7 @@ docker run -P nginx
 ````
 * After running the container, use this command to hecck the random port is assigned or not.
 ```bash
-docker port my-nginx
+docker port nginx
 ```
 * Now we can see that the port like Example :
 ```bash
@@ -74,7 +74,18 @@ Look in the "PORTS" column. It will show something like:
 ```bash
 docker run -p 8080:80 nginx
 ```
-
+* Now we can the port using
+```bash
+docker port nginx
+```
+(or)
+```bash
+docker ps
+```
+Output :
+```bash
+80/tcp -> 0.0.0.0:8080
+````
 * This maps host port 8080 → container port 80.
 
 ✅ **Use When:**
@@ -85,22 +96,30 @@ docker run -p 8080:80 nginx
 
 ## LAB :
 
-### Run an Nginx container mapping host port 8080 to container port 80
+### Run an httpd container mapping host port 8080 to container port 80
 
 ```bash
-docker run -d -p 8080:80 --name my-nginx nginx
+docker run -d -p 8080:80 --name mypractice httpd
+```
+Check the port using :
+```bash
+docker ps (or) docker port httpd
 ```
 
 * `-d` runs the container in detached mode (in the background).
 * `-p 8080:80` maps host port 8080 to container port 80.
-* `nginx` is the official image from Docker Hub.
+* `httpd` is the official image from Docker Hub.
 
-### Run Nginx container without port mapping
+### Run httpd container without port mapping
 
 ```bash
-docker run -d --name my-nginx nginx
+docker run -d --name mypractice httpd
+```
+Check the port using :
+```bash
+docker ps (or) docker port httpd
 ```
 
 * No `-p` option means no ports are exposed to the host.
-* You cannot access the Nginx server via localhost or the host IP.
+* You cannot access the httpd server via localhost or the host IP.
 
