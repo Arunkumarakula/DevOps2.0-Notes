@@ -166,7 +166,7 @@ http://localhost:8080
 ---
 #### Step-By-Step process:
 
-![](./Images/Dockerport.png))
+![](./Images/Dockerport.png)
 
 - Index.html file which conatins html-code
 ![](./Images/indexhtmlport.png)
