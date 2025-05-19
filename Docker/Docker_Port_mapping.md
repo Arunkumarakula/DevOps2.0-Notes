@@ -148,21 +148,17 @@ docker run -d -p 8080:80 -v $(pwd):/usr/local/apache2/htdocs/ --name my-httpd-co
 #### Step 3: Open your browser
 
 ```bash
-docker run -d -p 8080:80 --name mypractice httpd
+http://localhost:8080
 ```
 Check the port using :
 ```bash
-docker ps (or) docker port httpd
+docker ps (or) docker port httpd 
 ```
 
 * `-d` runs the container in detached mode (in the background).
 * `-p 8080:80` maps host port 8080 to container port 80.
 * `httpd` is the official image from Docker Hub.
 
-### Run httpd container without port mapping
-```bash
-http://localhost:8080
-```
 ---
 #### Step-By-Step process:
 
