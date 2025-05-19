@@ -162,11 +162,11 @@ docker ps (or) docker port httpd
 ---
 #### Step-By-Step process:
 
-![](./Images/Dockerport.png)
+![Image](https://github.com/user-attachments/assets/a930c8fd-9c16-4832-801b-2ed887d4d189)
 
 - Index.html file which conatins html-code
-![](./Images/indexhtmlport.png)
+![Image](https://github.com/user-attachments/assets/7aabe234-11ab-4fd8-bc38-909fb80abf48)
 
 - After Running a container we can access the application using Ip-address, we can this output.
-![](./Images/outputport.png)
+![Image](https://github.com/user-attachments/assets/a930c8fd-9c16-4832-801b-2ed887d4d189)
 
