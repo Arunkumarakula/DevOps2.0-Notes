@@ -42,9 +42,22 @@ docker run -P nginx
 ```bash
 docker port my-nginx
 ```
+* Now we can see that the port like Example :
+```bash
+80/tcp -> 0.0.0.0:49153
+```
+➡️ This means:
+* The container's port 80 is mapped to host port 49153.
+* You can access the app using: http://localhost:49153
 
-* If Nginx exposes port 80, Docker might map it to something like 32768 on the host.
-* Random port (check via docker port).
+### Alternative: Use docker ps
+```bash
+docker ps
+```
+Look in the "PORTS" column. It will show something like:
+```bash
+0.0.0.0:49153->80/tcp
+```
 
 ✅ **Use When:**
 
