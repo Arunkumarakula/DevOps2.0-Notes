@@ -1,137 +1,176 @@
-# *Docker Network* 
+# 🐳 Docker Networking🌐:
 
-Docker networking is how Docker containers communicate with each other, with the host machine, and with the outside world (internet or other networks).  
-→ When you create containers, Docker automatically connects them to a default network unless you specify otherwise.  
+Docker networking is how Docker containers communicate with each other, with the host machine, and with the outside world (internet or other networks).
+→ When you create containers, Docker automatically connects them to a default network unless you specify otherwise.
 → You can also create custom networks to control how containers talk to each other.
 
-## ➤ Why is Docker Networking: 
-→ Enables communication between containers (e.g., web server container talking to a database container).  
-→ Defines how and which container ports are published to the outside world.  
+## ➤ Why🤔is Docker Networking:
+
+→ Enables communication between containers (e.g., web server container talking to a database container).
+→ Defines how and which container ports are published to the outside world.
 → Provides isolation and security between containers.
 
 ## ➤ Types of Docker Networks : Docker has 4 main types of networks by default.
 
-### 1. **bridge (default) network**  
-Bridge network is Docker’s default private network where containers on the same host can communicate with each other using IP addresses.  
-→ When you start a container without specifying a network, it connects to this default bridge network.  
+### 1️⃣. bridge (default) network :
+
+Bridge network is Docker’s default private network where containers on the same host can communicate with each other using IP addresses.
+→ When you start a container without specifying a network, it connects to this default bridge network.
 → Requires port mapping to access containers externally.
 
-**why**:  
-→ To isolate container traffic from the host and other networks.  
+**Reason for Use:**
+→ To isolate container traffic from the host and other networks.
 → To allow containers on the same host to communicate securely.
 
-### 2. **host network**  
-The container shares the host’s networking namespace. No network isolation, the container uses the host’s IP address and ports directly.  
+### 2️⃣ . host network :
+
+The container shares the host’s networking namespace. No network isolation, the container uses the host’s IP address and ports directly.
 → Ports do not need to be published explicitly.
 
-**why**:  
-→ When a container needs direct access to the host’s network interfaces.  
+**Reason for Use:**
+→ When a container needs direct access to the host’s network interfaces.
 → For applications that require low latency.
 
-### 3. **none network**  
-The container has no network  
-→ Container is completely isolated from any network.  
+### 3️⃣. none network :
+
+The container has no network.
+→ Container is completely isolated from any network.
 → No communication with other containers or the outside world.
 
-**why**:  
+**Reason for Use:**
 → Useful for running containers without network access.
 
-### 4. **overlay network**  
-Enables communication between containers running on different Docker hosts.  
+### 4️⃣. overlay network :
+
+Enables communication between containers running on different Docker hosts.
 → Used mainly in Docker Swarm or Kubernetes clusters.
 
-**why**:  
+**Reason for Use:**
 → For multi-host container deployments, such as in orchestration platforms or clusters.
 
-> **Note**: You cannot remove Docker’s default networks (bridge, host, and none) because they are built-in and essential for Docker to function properly.
+**Note** : You cannot remove Docker’s default networks (bridge, host, and none) because they are built-in and essential for Docker to function properly.
 
 ---
 
-# *Commands*
+## Understand How Networking Work's - Practically :
 
-## **Bridge network** :
-
-➤ When you run a container without specifying a network, Docker connects it to the default bridge network.  
-**command**:  
-```bash
-docker run -d --name mycontainer nginx
-````
-
-➤ Custom bridge network with a specific name
-**command**:
+### \* Check the Default Networks which is available by default.
 
 ```bash
-docker network create --driver bridge <your-network-name>
-# eg:
-docker network create --driver bridge my-bridge-net
+docker network ls
 ```
+![](./Images/networkls.png)
 
-> Verify the Network using `docker network ls` command or
-> `docker network inspect my-bridge-net` this shows details like connected containers, subnet, gateway, etc.
-
-➤ To disconnect a container from a bridge network
-**command**:
-
-```bash
-docker network disconnect <network-name> <container-name>
-# eg:
-docker network disconnect my-bridge-net web1
-```
-
-➤ Command to remove a custom network
-**command**:
-
-```bash
-docker network rm <network-name>
-# eg:
-docker network rm my-bridge-net
-```
+* when we check with this command shows default networks — bridge, host, and none this are default Docker networks automatically created by Docker when you install it.
 
 ---
 
-## **Host Network** :
+##  Let's Understand about Bridge Network:
 
-→ You cannot create a new host network in Docker because the host network is a special built-in network
-→ We can use the existing host network when running containers.
-
-➤ Command to run a container with host network:
+### ➤ Create a Custom Bridge Network using:
 
 ```bash
-docker run --name my-host-container --network host nginx
+docker network create my-Network
 ```
+![](./Images/bridgenet1.png)
 
-➤ Disconnect container from Host Network
-→ You cannot disconnect a container from the host network once it is running with it because the host network mode is a special built-in mode.
-→ If we want to disconnect, stop and remove the container.
-
-**commands**:
+### ➤ Run a Container and Attach to the Custom Network using:
 
 ```bash
-docker stop my-container  
-docker rm my-container
+docker run -dit --name mypractice --network New-Network nginx
 ```
 
-→ Run it again with a different network, like bridge or a custom one.
-**command**:
+* `-d` runs the container in detached mode (in the background)
+* `-i` keeps STDIN open
+* `-t` allocates a terminal
+* `--name mypractice` names the container nginx
+* `--network New-Network` connects the container to your custom network
+
+### ➤ Verify the Container is Connected to Your Network:
 
 ```bash
-docker run --name my-container --network bridge nginx
+docker inspect my-Network
 ```
+![](./Images/custom-net-run.png)
 
 ---
 
-## **none network** :
+## Let'S know about Host-Network :
 
-➤ How to run a container with none network.
-**command**:
+### ➤ Create and Use Docker Host Network:
+
+Actually, you don’t need to create a host network — Docker already provides it by default.
+
+### 🔹 Step 1: Check Available Networks
 
 ```bash
-docker run --name isolated-container --network none alpine
+docker network ls
 ```
 
-➤ You cannot remove the default none network in Docker.
+You will see something like:
 
 ```
-
-Let me know if you'd like this saved to a file or further customized!
+NETWORK ID     NAME      DRIVER    SCOPE  
+abc123456789   bridge    bridge    local  
+def987654321   host      host      local  
 ```
+
+### 🔹 Step 2: Use the Host Network
+
+You can run any container using the host network:
+
+```bash
+docker run --rm --network host nginx
+```
+
+✅ Explanation of Each Part:
+
+* `docker run` : Start a new container
+* `--rm` Automatically remove the container when it stops
+* `--network host` : Use the host’s network stack (not Docker’s virtual bridge)
+* `<image-name>` The Docker image you want to run (e.g., nginx)
+
+This will start Nginx using the host’s network, not Docker’s bridge network.
+![](./Images/host.png)
+
+### 🔹 Step 3: You can then access it via:
+
+```
+http://localhost:<port>
+```
+![](./Images/nginx.png)
+
+⚠️ Why Use `--rm`?
+
+* Keeps things clean — no leftover containers.
+* Useful for testing or temporary services.
+
+🛑 You cannot create another host network — Docker allows only one host network per host (because it's directly tied to the OS network stack).
+
+---
+
+## Let's Know about Docker None Network:
+
+### 🔹 Step 1: Run a Container with none Network
+
+```bash
+docker run --name mycontainer --network none -dt nginx
+```
+![](./Images/none1.png)
+
+✅ What This Command Does :
+
+* `docker run` : Runs a new container
+* `--name mycontainer` Names the container mycontainer
+* `--network none` Disables all networking (no internet, no ports, no communication)
+* `-d` Runs in detached mode (in the background)
+* `-t` Allocates a pseudo-TTY (usually for interactive use, not needed here)
+* `nginx` Uses the nginx image to run a web server
+
+### 🔹 Step 2 : Check the network :
+
+```bash
+docker inspect container id or image-name
+```
+![](./Images/none2.png)
+
