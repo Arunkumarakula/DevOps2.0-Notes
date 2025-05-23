@@ -59,7 +59,7 @@ Enables communication between containers running on different Docker hosts.
 ```bash
 docker network ls
 ```
-![](./Images/networkls.png)
+![Image](https://github.com/user-attachments/assets/6084242b-920f-4ed4-bae7-34a7ef6f8361)
 
 * when we check with this command shows default networks — bridge, host, and none this are default Docker networks automatically created by Docker when you install it.
 
@@ -72,7 +72,7 @@ docker network ls
 ```bash
 docker network create my-Network
 ```
-![](./Images/bridgenet1.png)
+![Image](https://github.com/user-attachments/assets/72d61207-a483-4323-b35f-d52c8b84a484)
 
 ### ➤ Run a Container and Attach to the Custom Network using:
 
@@ -91,7 +91,7 @@ docker run -dit --name mypractice --network New-Network nginx
 ```bash
 docker inspect my-Network
 ```
-![](./Images/custom-net-run.png)
+![Image](https://github.com/user-attachments/assets/5ae8ef3d-1953-4e35-b159-c9462b153cc9)
 
 ---
 
@@ -131,14 +131,14 @@ docker run --rm --network host nginx
 * `<image-name>` The Docker image you want to run (e.g., nginx)
 
 This will start Nginx using the host’s network, not Docker’s bridge network.
-![](./Images/host.png)
+![Image](https://github.com/user-attachments/assets/598d1c2d-0b86-4a58-a1f0-009f71f405a0)
 
 ### 🔹 Step 3: You can then access it via:
 
 ```
 http://localhost:<port>
 ```
-![](./Images/nginx.png)
+![Image](https://github.com/user-attachments/assets/d50a9e8f-4014-4f6e-aa33-914e94d231c3)
 
 ⚠️ Why Use `--rm`?
 
@@ -156,7 +156,7 @@ http://localhost:<port>
 ```bash
 docker run --name mycontainer --network none -dt nginx
 ```
-![](./Images/none1.png)
+![Image](https://github.com/user-attachments/assets/b94b9e91-df57-4b42-bde9-8695f141b4a6)
 
 ✅ What This Command Does :
 
@@ -172,5 +172,5 @@ docker run --name mycontainer --network none -dt nginx
 ```bash
 docker inspect container id or image-name
 ```
-![](./Images/none2.png)
+![Image](https://github.com/user-attachments/assets/19d22ade-55ff-474f-a8bb-a459a0bd9c46)
 
