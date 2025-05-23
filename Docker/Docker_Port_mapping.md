@@ -163,5 +163,5 @@ docker ps (or) docker port httpd
 ![Image](https://github.com/user-attachments/assets/7aabe234-11ab-4fd8-bc38-909fb80abf48)
 
 - After Running a container we can access the application using Ip-address, we can this output.
-![](./Images/outputport.png)
+![Image](https://github.com/user-attachments/assets/595c4a1e-501f-4e41-bf8a-89545d4f8639)
 
