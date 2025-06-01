@@ -1,6 +1,6 @@
-# Docker Volume :
+# **Docker Volume :**
 
-- A Docker volume is a persistent storage mechanism used to store data outside of Docker containers.  
+ A Docker volume is a persistent storage mechanism used to store data outside of Docker containers.  
 - Volumes are managed by Docker and can be shared across containers.
 
 - Managed by Docker: Volumes are stored in a part of the host filesystem managed by Docker (/var/lib/docker/volumes/ on Linux).  
@@ -8,19 +8,19 @@
 - Isolation: Volumes are independent of the container image.  
 - Shareable: Can be mounted into multiple containers.
 
-## Types of Docker Volume :
+## **Types of Docker Volume :**
 
-**Docker Volumes:** Docker Volume is a general term for a storage area managed by Docker.
+Docker Volumes: Docker Volume is a general term for a storage area managed by Docker.
 
 Within Docker volumes, there are two subtypes:
 
-### 1. Named Volumes:
+### **1. Named Volumes:**
 
 Volumes explicitly created and named by the user.  
 eg: my-volume  
 These volumes can be managed by Docker.
 
-**Example:**
+Example:
 ```
 docker volume create my-volume
 ```
@@ -32,10 +32,10 @@ docker volume create my-volume
 - Can be shared across containers  
 - Easy to backup, restore, and inspect  
 
-### 2. Unnamed (Anonymous) Volumes:
+### **2. Unnamed (Anonymous) Volumes:**
 
 Docker automatically creates a volume with a randomly generated name.  
-eg: `docker run -v /app/data nginx`  
+eg: docker run -v /app/data nginx  
 This volume is managed by Docker.
 
 ✅ Unnamed Volumes – Advantages:
@@ -43,7 +43,7 @@ This volume is managed by Docker.
 - Quick to use — no need to name  
 - Good for temporary persistent storage  
 
-### 3. Host Volumes (Bind Mounts): 
+### **3. Host Volumes (Bind Mounts):**
 
 Host Volumes allow you to mount a file or directory from your host machine into a Docker container.
 
@@ -53,7 +53,7 @@ Host Volumes allow you to mount a file or directory from your host machine into 
 - Docker will not manage these volumes.  
 - These volumes can store anywhere on your host.
 
-**Example:**
+Example:
 ```
 docker run -v /host/path:/container/path nginx
 ```
@@ -61,15 +61,14 @@ docker run -v /host/path:/container/path nginx
 Docker does NOT create a new volume.  
 Instead, it links your host directory (/host/path) to a path inside the container (/container/path).
 
-**Use cases: ✅ Ideal For:**
+Use cases: ✅ Ideal For:
 
-- Development: edit source code on the host and run inside container  
-- Sharing logs from container to host  
+Development: edit source code on the host and run inside container  
+Sharing logs from container to host  
 
-🚫 **Avoid In:**  
-- Production: it breaks Docker’s portability and isolation  
+🚫 Avoid In:  Production: it breaks Docker’s portability and isolation  
 
-### 4. tmpfs Volume :
+### **4. tmpfs Volume :**
 
 tmpfs volume is a temporary in-memory file system that Docker mounts inside a container. It stores data in RAM, not on disk. That means:
 
@@ -77,7 +76,7 @@ tmpfs volume is a temporary in-memory file system that Docker mounts inside a co
 - It is volatile (data is lost when the container stops)  
 - It is secure (nothing is written to disk)  
 
-**Command:**
+Command:
 ```
 docker run --tmpfs /app/cache myimage
 ```
@@ -95,21 +94,21 @@ docker run --tmpfs /app/cache myimage
 - Data is lost when container stops or restarts  
 - Consumes system RAM, so large usage can affect host performance  
 
-## ✅ Best Practices for Docker Volumes :
+## **✅ Best Practices for Docker Volumes :**
 
-**Use Named Volumes for:**
+Use Named Volumes for:
 
-- Persistent data (DBs, app data)  
-- Easy backup and restore  
-- Best for production  
+Persistent data (DBs, app data)  
+Easy backup and restore  
+Best for production  
 
-**Use Host Volumes (Bind Mounts) for:**
+Use Host Volumes (Bind Mounts) for:
 
-- Development (live code sync)  
-- Config/testing with local files  
-- Avoid in production  
+Development (live code sync)  
+Config/testing with local files  
+Avoid in production  
 
-**Use tmpfs Volumes for:**
+Use tmpfs Volumes for:
 
-- Temporary or sensitive in-memory data  
-- Fast and auto-clears on stop  
+Temporary or sensitive in-memory data  
+Fast and auto-clears on stop  
